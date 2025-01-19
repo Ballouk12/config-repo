@@ -5,13 +5,15 @@ spring:
     password:
 
   kafka:
-    bootstrap-servers: localhost:9092  # Adresse et port de votre serveur Kafka
+    bootstrap-servers: localhost:9092
     producer:
-      client-id: auth-producer  # (Optionnel) Nom du client Kafka pour cette application
+      client-id: auth-producer
 
   cloud:
     stream:
       bindings:
-        output-out-0:
-          destination : usersTopic
-
+        usersTopic-out-0:           # Changé de output-out-0 à usersTopic-out-0
+          destination: usersTopic
+          content-type: application/json
+      function:
+        definition: usersTopic      # Ajout de la définition de la fonction

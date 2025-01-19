@@ -5,27 +5,18 @@ spring:
     password:
 
   kafka:
-    bootstrap-servers: localhost:9092  # Adresse et port de votre serveur Kafka
+    bootstrap-servers: localhost:9092
     producer:
-      client-id: transaction-producer  # (Optionnel) Nom du client Kafka pour cette application
+      client-id: transaction-producer
 
   cloud:
     stream:
       bindings:
-        output-out-0:
-          destination: transactionsTopic  # Topic pour produire les messages
-          content-type: application/json   # Sérialisation en JSON
         usersTopicConsumer-in-0:
-          destination: usersTopic         # Topic à consommer
+          destination: usersTopic
           content-type: application/json
-
       function:
-        definition: usersTopicConsumer  # Fonction qui consomme les messages
-        bindings:
-          usersTopicConsumer-in-0:
-            destination: usersTopic
-            content-type: application/json
-
+        definition: usersTopicConsumer
       kafka:
         binder:
           producer-properties:
