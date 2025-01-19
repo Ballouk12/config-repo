@@ -6,20 +6,12 @@ spring:
 
   kafka:
     bootstrap-servers: localhost:9092
-    producer:
-      client-id: transaction-producer
 
   cloud:
     stream:
       bindings:
         usersTopicConsumer-in-0:
           destination: usersTopic
-          content-type: application/json
+          group: transaction-group  # Ajout d'un groupe de consommateurs
       function:
         definition: usersTopicConsumer
-      kafka:
-        binder:
-          producer-properties:
-            retries: 3
-            acks: all
-            compression-type: gzip
