@@ -5,10 +5,10 @@ spring:
     username: root
     password:
 
-
-kafka:
-  producer:
-      client-id: notif-producer,
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+        client-id: notif-producer
 
   cloud:
     stream:
