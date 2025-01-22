@@ -20,4 +20,4 @@ spring:
           destination: notificationsTopic
           content-type: application/json
         function:
-          definition: usersTopicConsumer , usersTopic
+          definition: usersTopicConsumer , notificationsTopic
